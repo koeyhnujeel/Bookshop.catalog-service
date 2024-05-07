@@ -8,6 +8,6 @@ public class HomeController {
 
 	@GetMapping("/")
 	public String getGreeting() {
-		return "의류 카탈로그에 오신 것을 환영합니다.";
+		return "책 카탈로그에 오신 것을 환영합니다.";
 	}
 }
