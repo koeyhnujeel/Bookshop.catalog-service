@@ -3,11 +3,18 @@ package com.zunshop.catalogservice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.zunshop.catalogservice.config.ZunProperties;
+
+import lombok.RequiredArgsConstructor;
+
 @RestController
+@RequiredArgsConstructor
 public class HomeController {
+
+	private final ZunProperties zunProperties;
 
 	@GetMapping("/")
 	public String getGreeting() {
-		return "책 카탈로그에 오신 것을 환영합니다.";
+		return zunProperties.getGreeting();
 	}
 }
