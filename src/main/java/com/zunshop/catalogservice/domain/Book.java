@@ -37,6 +37,8 @@ public class Book {
 
 	private Double price;
 
+	private String publisher;
+
 	@CreatedDate
 	private Instant createdDate;
 
@@ -47,11 +49,12 @@ public class Book {
 	private int version;
 
 	@Builder
-	private Book(String isbn, String title, String author, Double price) {
+	private Book(String isbn, String title, String author, Double price, String publisher) {
 		this.isbn = isbn;
 		this.title = title;
 		this.author = author;
 		this.price = price;
+		this.publisher = publisher;
 	}
 
 	public static Book from(BookRequest bookRequest) {
@@ -60,6 +63,7 @@ public class Book {
 			.title(bookRequest.getTitle())
 			.author(bookRequest.getAuthor())
 			.price(bookRequest.getPrice())
+			.publisher(bookRequest.getPublisher())
 			.build();
 	}
 
@@ -67,5 +71,6 @@ public class Book {
 		this.title = request.getTitle();
 		this.author = request.getAuthor();
 		this.price = request.getPrice();
+		this.publisher = request.getPublisher();
 	}
 }

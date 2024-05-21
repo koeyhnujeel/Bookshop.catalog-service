@@ -17,23 +17,27 @@ public class BookRequest {
 		regexp = "^([0-9]{10}|[0-9]{13})$",
 		message = "The ISBN format must be valid."
 	)
-	String isbn;
+	private String isbn;
 
 	@NotBlank(message = "The boot title must be defined.")
-	String title;
+	private String title;
 
 	@NotBlank(message = "The boot author must be defined.")
-	String author;
+	private String author;
 
 	@NotNull(message = "The book price must be defined.")
 	@Positive(message = "The boot price must be greater than zero.")
-	Double price;
+	private Double price;
+
+	@NotBlank(message = "The book publisher must be defined.")
+	private String publisher;
 
 	@Builder
-	public BookRequest(String isbn, String title, String author, Double price) {
+	public BookRequest(String isbn, String title, String author, Double price, String publisher) {
 		this.isbn = isbn;
 		this.title = title;
 		this.author = author;
 		this.price = price;
+		this.publisher = publisher;
 	}
 }

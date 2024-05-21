@@ -31,6 +31,7 @@ public class BookValidationTests {
 			.title("title")
 			.author("author")
 			.price(9.90)
+			.publisher("publisher")
 			.build();
 
 		// expected
@@ -46,6 +47,7 @@ public class BookValidationTests {
 			.title("title")
 			.author("author")
 			.price(9.90)
+			.publisher("publisher")
 			.build();
 
 		// expected

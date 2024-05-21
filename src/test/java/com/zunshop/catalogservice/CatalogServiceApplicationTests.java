@@ -22,6 +22,7 @@ class CatalogServiceApplicationTests {
 			.title("title")
 			.author("author")
 			.price(9.90)
+			.publisher("publisher")
 			.build();
 
 		webTestClient
