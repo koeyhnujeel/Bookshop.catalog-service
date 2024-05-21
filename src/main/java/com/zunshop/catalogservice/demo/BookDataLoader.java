@@ -1,5 +1,7 @@
 package com.zunshop.catalogservice.demo;
 
+import java.util.List;
+
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.EventListener;
@@ -25,7 +27,6 @@ public class BookDataLoader {
 			.author("Lyra Silverstar")
 			.price(9.90)
 			.build();
-		bookRepository.save(book1);
 
 		Book book2 = Book.builder()
 			.isbn("1234567892")
@@ -33,7 +34,7 @@ public class BookDataLoader {
 			.author("Iorek Polarson")
 			.price(12.90)
 			.build();
-		bookRepository.save(book2);
 
+		bookRepository.saveAll(List.of(book1, book2));
 	}
 }

@@ -2,11 +2,12 @@ package com.zunshop.catalogservice.domain;
 
 import java.util.Optional;
 
-public interface BookRepository {
-	Iterable<Book> findAll();
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.transaction.annotation.Transactional;
+
+public interface BookRepository extends JpaRepository<Book, Long> {
 	Optional<Book> findByIsbn(String isbn);
 	boolean existsByIsbn(String isbn);
-	Book save(Book book);
 	void deleteByIsbn(String isbn);
-
 }

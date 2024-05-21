@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.zunshop.catalogservice.web.request.BookRequest;
 import com.zunshop.catalogservice.web.response.BookResponse;
@@ -16,11 +17,11 @@ public class BookService {
 
 	private final BookRepository bookRepository;
 
-	// public List<BookResponse> viewBookList() {
-	// 	return bookRepository.findAll().stream()
-	// 		.map(book -> BookResponse.from(book))
-	// 		.collect(Collectors.toList());
-	// }
+	public List<BookResponse> viewBookList() {
+		return bookRepository.findAll().stream()
+			.map(BookResponse::from)
+			.collect(Collectors.toList());
+	}
 
 	public BookResponse viewBookDetails(String isbn) {
 		Book book = bookRepository.findByIsbn(isbn)
@@ -38,10 +39,12 @@ public class BookService {
 		bookRepository.save(book);
 	}
 
+	@Transactional
 	public void removeBookFromCatalog(String isbn) {
 		bookRepository.deleteByIsbn(isbn);
 	}
 
+	@Transactional
 	public void modifyBookDetails(String isbn, BookRequest request) {
 		bookRepository.findByIsbn(isbn)
 			.ifPresentOrElse(

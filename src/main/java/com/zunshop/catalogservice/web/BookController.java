@@ -27,10 +27,10 @@ public class BookController {
 
 	private final BookService bookService;
 
-	// @GetMapping
-	// public List<BookResponse> get() {
-	// 	return bookService.viewBookList();
-	// }
+	@GetMapping
+	public List<BookResponse> get() {
+		return bookService.viewBookList();
+	}
 
 	@GetMapping("{isbn}")
 	public BookResponse getByIsbn(@PathVariable String isbn) {
